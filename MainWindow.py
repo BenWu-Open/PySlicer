@@ -264,9 +264,10 @@ class MainWindow(Main_UI.Ui_MainWindow, QMainWindow):
                 return
 
             # Safety check: Prevent image-dependent plugins from running without data
-            #if self.raw_volume is None or self.shm_raw is None:
-            #    QMessageBox.warning(self, "Warning", "Please load DICOM images first.")
-            #    return
+            # Enable for a while
+            if self.raw_volume is None or self.shm_raw is None:
+                QMessageBox.warning(self, "Warning", "Please load DICOM images first.")
+                return
 
             # --- NEW: Build the Context Dictionary for Plugins ---
             plugin_context = {
