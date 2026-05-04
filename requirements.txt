@@ -1,0 +1,11 @@
+PyQt6
+PySide6
+opencv-python
+numpy
+psutil
+vispy
+requests
+PyOpenGL
+pyinstaller
+pydicom
+matplotlib

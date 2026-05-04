@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c6a144a7-cf93-4847-821c-8b4e20912d48}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>main.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>MSBuild|PYTHON3.12.10.test|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="plugins\UI\compile.bat" />
+    <Content Include="plugins\UI\lymphnode.ui" />
+    <Content Include="PySlicer.spec" />
+    <Content Include="build.bat" />
+    <Content Include="cgu.ico" />
+    <Content Include="README.md" />
+    <Content Include="requirements.txt" />
+    <Content Include="UI\compile.bat" />
+    <Content Include="UI\MainUI.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="basePlugin.py" />
+    <Compile Include="main.py" />
+    <Compile Include="MainWindow.py" />
+    <Compile Include="pluginManager.py" />
+    <Compile Include="plugins\LymphNodeDetection.py" />
+    <Compile Include="plugins\TransformPlugin.py" />
+    <Compile Include="plugins\UI\lymphnode.py" />
+    <Compile Include="tempMainWindow.py" />
+    <Compile Include="tempplgmgr.py" />
+    <Compile Include="temptest.py" />
+    <Compile Include="UI\MainUI.py" />
+    <Compile Include="utils\fileUtils.py" />
+    <Compile Include="utils\SlicerLog.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="plugins\" />
+    <Folder Include="plugins\UI\" />
+    <Folder Include="utils\" />
+    <Folder Include="UI" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="..\..\..\virtualpython\PYTHON3.12.10-X64-A1629\">
+      <Id>PYTHON3.12.10-X64-A1629</Id>
+      <Version>3.12</Version>
+      <Description>PYTHON3.12.10-X64-A1629 (Python 3.12 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="..\..\..\virtualpython\PYTHON3.12.10.test\">
+      <Id>PYTHON3.12.10.test</Id>
+      <Version>3.12</Version>
+      <Description>PYTHON3.12.10.test (Python 3.12 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
