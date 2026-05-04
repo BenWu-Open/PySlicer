@@ -9,3 +9,6 @@ PyOpenGL
 pyinstaller
 pydicom
 matplotlib
+pylibjpeg
+pylibjpeg-libjpeg
+pylibjpeg-openjpeg

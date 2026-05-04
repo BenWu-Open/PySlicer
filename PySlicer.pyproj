@@ -37,9 +37,6 @@
     <Compile Include="plugins\LymphNodeDetection.py" />
     <Compile Include="plugins\TransformPlugin.py" />
     <Compile Include="plugins\UI\lymphnode.py" />
-    <Compile Include="tempMainWindow.py" />
-    <Compile Include="tempplgmgr.py" />
-    <Compile Include="temptest.py" />
     <Compile Include="UI\MainUI.py" />
     <Compile Include="utils\fileUtils.py" />
     <Compile Include="utils\SlicerLog.py" />
