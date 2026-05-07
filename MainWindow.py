@@ -18,6 +18,15 @@ from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QAction
 from vispy import scene
 
+
+if getattr(sys, 'frozen', False):
+    GLOBAL_CWD = os.path.dirname(sys.executable)
+    os.chdir(GLOBAL_CWD)
+    sys.path.insert(1, GLOBAL_CWD)
+
+    if (os.path.exists(os.getcwd() + r'/plugins')) == False:
+        os.makedirs('plugins')
+
 parentdir = (os.path.dirname(os.path.realpath(__file__)))
 sys.path.insert(1, parentdir)
 
