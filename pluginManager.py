@@ -77,17 +77,23 @@ class pluginManager:
 
     def getPlugins(self, plugins_dir=None):
         """Scans the plugins folder and maps module paths."""
+        file_paths = []
         if not plugins_dir:
             bundle_dir = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
             plugins_dir = os.path.join(bundle_dir, "plugins")
+            file_paths = FileUtils.listFiles(plugins_dir)
 
+            if getattr(sys, 'frozen', False):
+                exe_dir = os.path.dirname(sys.executable)
+                local_plugins_dir = os.path.join(exe_dir, "plugins")
+                file_paths = file_paths + FileUtils.listFiles(local_plugins_dir)
+            
         # Add plugins parent to sys.path so importlib can find them
-        parent_of_plugins = os.path.dirname(plugins_dir)
-        if parent_of_plugins not in sys.path:
-            sys.path.insert(0, parent_of_plugins)
+        #parent_of_plugins = os.path.dirname(plugins_dir)
+        #if parent_of_plugins not in sys.path:
+        #    sys.path.insert(0, parent_of_plugins)
 
         try:
-            file_paths = FileUtils.getFilesInFolder(plugins_dir)
             for filepath in file_paths:
                 if not filepath.endswith(".py") or filepath.endswith("__init__.py"):
                     continue

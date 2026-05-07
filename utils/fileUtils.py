@@ -111,6 +111,24 @@ class FileUtils(object):
             return filePaths
 
     @staticmethod
+    def listFiles(fileDir):
+        filePaths = []
+        try:
+            # Get all items in the directory
+            for fileName in os.listdir(fileDir):
+                # Construct the full path
+                fullPath = os.path.join(fileDir, fileName)
+                
+                # Ensure we only add files, not subdirectories
+                if os.path.isfile(fullPath):
+                    filePaths.append(fullPath)
+                    
+            return filePaths
+        except Exception as err:
+            logger.exception(str(err))
+            return filePaths
+    
+    @staticmethod
     # Return file name without filetype, eg. file.txt -> file
     def removeFileType(fileName):
         try:
