@@ -1,23 +1,34 @@
 # -*- mode: python ; coding: utf-8 -*-
 import os
 import vispy
+from PyInstaller.utils.hooks import collect_data_files, collect_submodules
 
 # Get paths for VisPy internal folders
 vispy_dir = os.path.dirname(vispy.__file__)
 vispy_glsl_path = os.path.join(vispy_dir, 'glsl')
 vispy_data_path = os.path.join(vispy_dir, 'io', '_data')
 
+# 1. Combine your existing data files with the AI model data
+added_datas = [
+    (vispy_glsl_path, os.path.join('vispy', 'glsl')),
+    (vispy_data_path, os.path.join('vispy', 'io', '_data')),
+    ('./UI/cgu.ico', '.'),
+    ('plugins', 'plugins')
+]
+added_datas += collect_data_files('totalsegmentator')
+added_datas += collect_data_files('nnunetv2')
+
+# 2. Combine your existing hidden imports with the AI scripts
+hidden_imports = ['vispy.app.backends._pyqt6', 'cv2']
+hidden_imports += collect_submodules('totalsegmentator')
+hidden_imports += collect_submodules('nnunetv2')
+
 a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[
-        (vispy_glsl_path, os.path.join('vispy', 'glsl')),
-        (vispy_data_path, os.path.join('vispy', 'io', '_data')),
-        ('./UI/cgu.ico', '.'),
-        ('plugins', 'plugins')
-    ],
-    hiddenimports=['vispy.app.backends._pyqt6', 'cv2'],
+    datas=added_datas,             # <--- Now uses the combined list
+    hiddenimports=hidden_imports,  # <--- Now uses the combined list
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

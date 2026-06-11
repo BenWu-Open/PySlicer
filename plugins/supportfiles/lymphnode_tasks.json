@@ -1,0 +1,8 @@
+{
+    "TRK-0007": {
+        "dicom_path": "C:/projects/real_cases/ABD_LYMPH_007",
+        "dest_path": "C:/projects/real_output/ABD_LYMPH_007",
+        "nifti_path": "C:/projects/real_output/ABD_LYMPH_007\\NIfTI_Output\\ABD_LYMPH_007.nii.gz",
+        "status": "Finished"
+    }
+}

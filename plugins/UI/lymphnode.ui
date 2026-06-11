@@ -6,132 +6,256 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>446</width>
-    <height>341</height>
+    <width>457</width>
+    <height>622</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>2.5D Converter</string>
+   <string>LymphNode Detect</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0" colspan="3">
-    <widget class="QGroupBox" name="groupBox">
+  <layout class="QGridLayout" name="gridLayout_4">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>Image Convertion</string>
+      <string>Submit</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QPushButton" name="SourcePath_Button">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="3" column="0">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>251</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="Start_pushButton">
+        <property name="maximumSize">
+         <size>
+          <width>81</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Source Path</string>
+         <string>Start</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="SourcePath_lineEdit">
-        <property name="dragEnabled">
-         <bool>true</bool>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="Cancel_pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>81</width>
+          <height>30</height>
+         </size>
         </property>
-        <property name="readOnly">
-         <bool>true</bool>
+        <property name="maximumSize">
+         <size>
+          <width>81</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <widget class="QLineEdit" name="AIServer_lineEdit">
+        <property name="placeholderText">
+         <string>AI Server URL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="3">
+       <widget class="QTextBrowser" name="Status_textBrowser">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
         </property>
         <property name="placeholderText">
-         <string>Image Source Path</string>
-        </property>
-        <property name="clearButtonEnabled">
-         <bool>false</bool>
+         <string>Example URL: http://ai.server.com:8080/analyze</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="DestinationPath_Button">
-        <property name="text">
-         <string>Output Path</string>
+      <item row="0" column="0" colspan="3">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Image Convertion</string>
         </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="DestinationPath_lineEdit">
-        <property name="dragEnabled">
-         <bool>true</bool>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="placeholderText">
-         <string>Image Destination Path</string>
-        </property>
-        <property name="clearButtonEnabled">
-         <bool>false</bool>
-        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="SourcePath_Button">
+           <property name="text">
+            <string>Source Path</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="SourcePath_lineEdit">
+           <property name="dragEnabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Dicom Source Path</string>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="DestinationPath_Button">
+           <property name="text">
+            <string>Output Path</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="DestinationPath_lineEdit">
+           <property name="dragEnabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Nifti Destination Path</string>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="QLineEdit" name="AIServer_lineEdit">
-     <property name="placeholderText">
-      <string>AI Server URL</string>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Status</string>
      </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="3">
-    <widget class="QTextBrowser" name="Status_textBrowser">
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
-     </property>
-     <property name="placeholderText">
-      <string>Example URL: http://ai.server.com:8080/analyze</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>251</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="Start_pushButton">
-     <property name="maximumSize">
-      <size>
-       <width>81</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Start</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="Cancel_pushButton">
-     <property name="minimumSize">
-      <size>
-       <width>81</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>81</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Cancel</string>
-     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0" colspan="3">
+       <widget class="QLineEdit" name="AIServer_lineEdit_Status">
+        <property name="placeholderText">
+         <string>AI Server URL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <widget class="QTextBrowser" name="Status_textBrowser_Status">
+        <property name="minimumSize">
+         <size>
+          <width>421</width>
+          <height>74</height>
+         </size>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="placeholderText">
+         <string>Example URL: http://ai.server.com:8080/status</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="3">
+       <widget class="QScrollArea" name="scrollArea_Status">
+        <property name="minimumSize">
+         <size>
+          <width>421</width>
+          <height>131</height>
+         </size>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>405</width>
+           <height>115</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>240</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="Retrieve_pushButton_Status">
+        <property name="minimumSize">
+         <size>
+          <width>81</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>81</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Retrieve</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="Cancel_pushButton_Status">
+        <property name="minimumSize">
+         <size>
+          <width>81</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>81</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
