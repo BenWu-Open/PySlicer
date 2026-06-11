@@ -7,14 +7,28 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>647</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>PySlicer</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow::separator {
+    background: lightgray;
+    width: 5px; 
+    height: 5px;
+}
+
+QMainWindow::separator:hover {
+    background: blue;
+}</string>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
   <property name="dockOptions">
-   <set>QMainWindow::DockOption::AllowNestedDocks|QMainWindow::DockOption::AllowTabbedDocks|QMainWindow::DockOption::AnimatedDocks|QMainWindow::DockOption::GroupedDragging</set>
+   <set>QMainWindow::DockOption::AllowNestedDocks|QMainWindow::DockOption::AllowTabbedDocks|QMainWindow::DockOption::AnimatedDocks|QMainWindow::DockOption::ForceTabbedDocks|QMainWindow::DockOption::GroupedDragging|QMainWindow::DockOption::VerticalTabs</set>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
@@ -27,11 +41,11 @@
     <item row="0" column="1">
      <widget class="QWidget" name="sagittal_widget" native="true"/>
     </item>
-    <item row="1" column="0">
-     <widget class="QWidget" name="coronal_widget" native="true"/>
-    </item>
     <item row="1" column="1">
      <widget class="QWidget" name="d3_widget" native="true"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QWidget" name="coronal_widget" native="true"/>
     </item>
    </layout>
   </widget>
@@ -49,6 +63,7 @@
      <string>File</string>
     </property>
     <addaction name="actionOpen_Image"/>
+    <addaction name="actionClose_Image"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuTools">
@@ -72,12 +87,18 @@
    </property>
    <property name="minimumSize">
     <size>
-     <width>200</width>
+     <width>76</width>
      <height>100</height>
     </size>
    </property>
+   <property name="maximumSize">
+    <size>
+     <width>524287</width>
+     <height>524287</height>
+    </size>
+   </property>
    <property name="features">
-    <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
+    <set>QDockWidget::DockWidgetFeature::DockWidgetFloatable</set>
    </property>
    <property name="windowTitle">
     <string/>
@@ -112,12 +133,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QDockWidget" name="MainTool">
    <property name="minimumSize">
     <size>
-     <width>200</width>
-     <height>100</height>
+     <width>299</width>
+     <height>494</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>524287</width>
+     <height>524287</height>
     </size>
    </property>
    <property name="features">
-    <set>QDockWidget::DockWidgetFeature::NoDockWidgetFeatures</set>
+    <set>QDockWidget::DockWidgetFeature::DockWidgetFloatable</set>
    </property>
    <property name="allowedAreas">
     <set>Qt::DockWidgetArea::LeftDockWidgetArea</set>
@@ -128,7 +155,266 @@ li.checked::marker { content: &quot;\2612&quot;; }
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents"/>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="group_input">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>90</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Coordinates (X, Y, Z)</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="1" column="3">
+         <widget class="QPushButton" name="btn_jump">
+          <property name="maximumSize">
+           <size>
+            <width>81</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Go</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="2">
+         <widget class="QLabel" name="lbl_coords">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 900 italic 9pt &quot;Segoe UI&quot;;
+color: rgb(211, 47, 47);</string>
+          </property>
+          <property name="text">
+           <string>X: 1, Y: 1, Z: 1</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="edit_y">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>49</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>Y</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="edit_x">
+          <property name="maximumSize">
+           <size>
+            <width>49</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>X</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLineEdit" name="edit_z">
+          <property name="maximumSize">
+           <size>
+            <width>49</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>Z</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QCheckBox" name="checkBox_3D">
+          <property name="text">
+           <string>Enable 3D</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QCheckBox" name="checkBox_crosshair">
+          <property name="text">
+           <string>Crosshair</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QGroupBox" name="group_anno">
+       <property name="title">
+        <string>Labeling/Markups</string>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="4" column="0">
+         <widget class="QPushButton" name="btn_save">
+          <property name="maximumSize">
+           <size>
+            <width>81</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Export</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="btn_close_curve">
+          <property name="maximumSize">
+           <size>
+            <width>90</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Finish Curve</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="2">
+         <widget class="QScrollArea" name="scrollArea_annotation">
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>221</width>
+             <height>52</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QRadioButton" name="radioButton_Curve">
+          <property name="text">
+           <string>Closed Curve</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QRadioButton" name="radioButton_Point">
+          <property name="text">
+           <string>Point (Fiducial Point)</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="btn_load">
+          <property name="maximumSize">
+           <size>
+            <width>81</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Import</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QGroupBox" name="group_contrast">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Contrast / Brightness</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Window Width</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QSlider" name="slider_width">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Window Level</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QSlider" name="slider_level">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <action name="actionExit">
    <property name="text">
@@ -163,6 +449,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <action name="actionImage_Converter">
    <property name="text">
     <string>Image Converter</string>
+   </property>
+  </action>
+  <action name="actionClose_Image">
+   <property name="text">
+    <string>Close Image</string>
    </property>
   </action>
  </widget>

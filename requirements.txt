@@ -12,3 +12,6 @@ matplotlib
 pylibjpeg
 pylibjpeg-libjpeg
 pylibjpeg-openjpeg
+dicom2nifti
+totalsegmentator
+nibabel

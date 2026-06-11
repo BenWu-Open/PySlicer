@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <InterpreterId>MSBuild|PYTHON3.12.10|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|PYTHON3.12.10.test|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -19,7 +19,10 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="plugins\supportfiles\lymphnode_tasks.json" />
+    <Content Include="plugins\supportfiles\__pycache__\ResultViewer.cpython-312.pyc" />
     <Content Include="plugins\UI\compile.bat" />
+    <Content Include="plugins\UI\encryptDicom.ui" />
     <Content Include="plugins\UI\lymphnode.ui" />
     <Content Include="build.bat" />
     <Content Include="cgu.ico" />
@@ -35,15 +38,25 @@
     <Compile Include="main.py" />
     <Compile Include="MainWindow.py" />
     <Compile Include="pluginManager.py" />
+    <Compile Include="plugins\ExportSnapshotPlugin.py" />
+    <Compile Include="plugins\ImageEnhancementPlugin.py" />
     <Compile Include="plugins\LymphNodeDetection.py" />
+    <Compile Include="plugins\MeasurementPlugin.py" />
+    <Compile Include="plugins\MetadataInspectorPlugin.py" />
+    <Compile Include="plugins\MPRControlPlugin.py" />
+    <Compile Include="plugins\supportfiles\ResultViewer.py" />
     <Compile Include="plugins\TransformPlugin.py" />
+    <Compile Include="plugins\UI\encryptDicom.py" />
     <Compile Include="plugins\UI\lymphnode.py" />
+    <Compile Include="plugins\WindowPresetPlugin.py" />
     <Compile Include="UI\MainUI.py" />
     <Compile Include="utils\fileUtils.py" />
     <Compile Include="utils\SlicerLog.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="plugins\" />
+    <Folder Include="plugins\supportfiles\" />
+    <Folder Include="plugins\supportfiles\__pycache__\" />
     <Folder Include="plugins\UI\" />
     <Folder Include="utils\" />
     <Folder Include="UI" />
@@ -58,10 +71,10 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
-    <Interpreter Include="..\..\virtualpython\PYTHON3.12.10\">
-      <Id>PYTHON3.12.10</Id>
+    <Interpreter Include="..\..\virtualpython\PYTHON3.12.10.test\">
+      <Id>PYTHON3.12.10.test</Id>
       <Version>3.12</Version>
-      <Description>PYTHON3.12.10 (Python 3.12 (64-bit))</Description>
+      <Description>PYTHON3.12.10.test (Python 3.12 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
